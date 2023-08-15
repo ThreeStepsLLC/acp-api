@@ -10,7 +10,13 @@ services:
       - "8084:8080"
     networks:
       - proxynet
+    volumes:
+      - SharedAssets:/root/uploads
 
 networks:
   proxynet:
+    external: true
+
+volumes:
+  SharedAssets:
     external: true
