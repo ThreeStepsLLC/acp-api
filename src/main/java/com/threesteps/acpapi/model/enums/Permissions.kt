@@ -4,11 +4,16 @@ enum class Permissions(
     var id: String? = "",
     var title: String? = ""
 ) {
-    ABOUT_US("about-us", "Haqqımda"),
-    SURGERY("surgery", "Cərrahiyə"),
-    USEFUL_INFO("useful-info", "Faydalı məlumatlar"),
-    REVIEW("review", "Rəylər"),
-    GALLERY("partner", "Qalereya"),
+    OUR_EXPERIENCES("our-experiences", "Təcrübələrimiz"),
+    WHO_ARE_WE("who-are-we", "Haqqımızda"),
+    OUR_VALUES("our-values", "Dəyərlərimiz"),
+    OUR_MISSIONS("our-missions", "Missiyalarımız"),
+    OUR_VISION("our-vision", "Viziyonlarımız"),
+    SLOGAN("slogan", "Sloqan"),
+    CORE_VALUES("core-values", "Əsas dəyərlərimiz"),
+    FOOTER_VALUE("footer-value", "Footer dəyəri"),
+    PROJECTS("projects", "Layihələr"),
+    PARTNERS("partners", "Partnyorlar"),
     USERS("users", "İstifadəçilər"),
     SETTINGS("settings", "Ayarlar")
 }
