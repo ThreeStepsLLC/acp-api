@@ -43,9 +43,9 @@ public class AdminAuthController {
     }
 
     @PutMapping("update-password")
-    public ApiResponseDto updatePassword(@RequestBody UpdatePasswordRequest request) {
+    public ApiResponseDto<?> updatePassword(@RequestBody UpdatePasswordRequest request) {
         userService.updatePassword(request);
-        return new ApiResponseDto(null);
+        return new ApiResponseDto<>(null);
     }
 
     @GetMapping("/users/{userId}/permissions")
@@ -54,13 +54,13 @@ public class AdminAuthController {
     }
 
     @PostMapping("/add-permission")
-    public ApiResponseDto addPermission(@RequestBody UserPermissionManyRequest request) {
+    public ApiResponseDto<?> addPermission(@RequestBody UserPermissionManyRequest request) {
         userPermissionService.updatePermissions(request);
         return new ApiResponseDto<>(null);
     }
 
     @PostMapping("/add-user")
-    public ApiResponseDto addUser(@RequestBody RegisterRequest request) {
+    public ApiResponseDto<?> addUser(@RequestBody RegisterRequest request) {
         authService.register(request);
         return new ApiResponseDto<>(null);
     }
