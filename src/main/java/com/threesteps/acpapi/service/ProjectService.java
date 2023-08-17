@@ -9,6 +9,7 @@ import com.threesteps.acpapi.model.Project;
 import com.threesteps.acpapi.repository.ProjectRepository;
 import com.threesteps.acpapi.service.helper.FileService;
 import com.threesteps.acpapi.util.helper.FilePathHelper;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,8 +24,8 @@ public class ProjectService {
     private final FileService fileService;
 
     public ProjectService(ProjectRepository repository,
-                             ProjectMapper projectMapper,
-                             FileService fileService) {
+                          ProjectMapper projectMapper,
+                          FileService fileService) {
         this.repository = repository;
         this.projectMapper = projectMapper;
         this.fileService = fileService;
@@ -41,8 +42,19 @@ public class ProjectService {
                 .toList();
     }
 
-    public List<ProjectLangedDto> getLastLanged(String language) {
-        return repository
+    public List<ProjectLangedDto> getLastLanged(String language, Integer count) {
+        return count != null
+                ? repository
+                .findAllByOrderByCreateDateDesc(PageRequest.of(0, count))
+                .stream()
+                .map(x -> {
+                    var dto = projectMapper.toProjectLangedDto(x, language);
+                    dto.setImageUrl(FilePathHelper.combineForMedia(dto.getImageUrl()));
+                    return dto;
+                })
+                .toList()
+
+                : repository
                 .findAllByOrderByCreateDateDesc()
                 .stream()
                 .map(x -> {

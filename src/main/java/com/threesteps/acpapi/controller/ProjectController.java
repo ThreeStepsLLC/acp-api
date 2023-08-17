@@ -27,9 +27,9 @@ public class ProjectController {
     }
 
     @GetMapping("/last-langed")
-    public ApiResponseDto<List<ProjectLangedDto>> getLastLanged() {
+    public ApiResponseDto<List<ProjectLangedDto>> getLastLanged(@RequestParam(required = false) Integer count) {
         var language = languageService.getLanguage();
-        return new ApiResponseDto<>(projectService.getLastLanged(language));
+        return new ApiResponseDto<>(projectService.getLastLanged(language, count));
     }
 
     @GetMapping("/{id}")
