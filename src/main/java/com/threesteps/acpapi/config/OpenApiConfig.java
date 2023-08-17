@@ -18,7 +18,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .servers(List.of(server))
                 .info(new Info()
-                        .title("Dr Cahid API")
+                        .title("ACP API")
                         .version("1.0"));
     }
 
