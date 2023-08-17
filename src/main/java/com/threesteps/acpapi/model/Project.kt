@@ -5,8 +5,8 @@ import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "useful_infos")
-data class UsefulInfo @JvmOverloads constructor(
+@Table(name = "projects")
+data class Project @JvmOverloads constructor(
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -18,6 +18,12 @@ data class UsefulInfo @JvmOverloads constructor(
     var titleAZ: String? = null,
 
     var titleRU: String? = null,
+
+    var addressEN: String? = null,
+
+    var addressAZ: String? = null,
+
+    var addressRU: String? = null,
 
     @Column(length = 10000)
     var descriptionEN: String? = null,

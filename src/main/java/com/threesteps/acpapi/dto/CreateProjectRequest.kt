@@ -2,11 +2,14 @@ package com.threesteps.acpapi.dto
 
 import java.time.LocalDateTime
 
-data class CreateUsefulInfoRequest @JvmOverloads constructor(
+data class CreateProjectRequest @JvmOverloads constructor(
 
     var titleEN: String? = null,
     var titleAZ: String? = null,
     var titleRU: String? = null,
+    var addressEN: String? = null,
+    var addressAZ: String? = null,
+    var addressRU: String? = null,
     var descriptionEN: String? = null,
     var descriptionAZ: String? = null,
     var descriptionRU: String? = null,
