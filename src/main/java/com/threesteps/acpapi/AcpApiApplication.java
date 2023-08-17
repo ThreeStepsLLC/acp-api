@@ -15,7 +15,7 @@ public class AcpApiApplication {
 
 	@GetMapping
 	public String ok(){
-		return "test";
+		return "v1";
 	}
 
 }
