@@ -1,37 +1,37 @@
 package com.threesteps.acpapi.mapper;
 
-import com.threesteps.acpapi.dto.GalleryDto;
-import com.threesteps.acpapi.dto.CreateGalleryRequest;
-import com.threesteps.acpapi.model.Gallery;
+import com.threesteps.acpapi.dto.PartnerDto;
+import com.threesteps.acpapi.dto.CreatePartnerRequest;
+import com.threesteps.acpapi.model.Partner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GalleryMapper {
+public class PartnerMapper {
 
-    public GalleryDto toDTO(Gallery from) {
+    public PartnerDto toDTO(Partner from) {
         if (from == null) return null;
 
-        return new GalleryDto(from.getId(),
+        return new PartnerDto(from.getId(),
                 from.getTitle(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus());
     }
 
-    public Gallery toDBO(CreateGalleryRequest from) {
+    public Partner toDBO(CreatePartnerRequest from) {
         if (from == null) return null;
 
-        return new Gallery(null,
+        return new Partner(null,
                 from.getTitle(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus());
     }
 
-    public Gallery toDBO(GalleryDto from) {
+    public Partner toDBO(PartnerDto from) {
         if (from == null) return null;
 
-        return new Gallery(from.getId(),
+        return new Partner(from.getId(),
                 from.getTitle(),
                 from.getImageUrl(),
                 from.getCreateDate(),

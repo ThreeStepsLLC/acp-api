@@ -8,7 +8,7 @@ enum class Permissions(
     SURGERY("surgery", "Cərrahiyə"),
     USEFUL_INFO("useful-info", "Faydalı məlumatlar"),
     REVIEW("review", "Rəylər"),
-    GALLERY("gallery", "Qalereya"),
+    GALLERY("partner", "Qalereya"),
     USERS("users", "İstifadəçilər"),
     SETTINGS("settings", "Ayarlar")
 }

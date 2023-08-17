@@ -2,7 +2,7 @@ package com.threesteps.acpapi.dto
 
 import java.time.LocalDateTime
 
-data class GalleryDto @JvmOverloads constructor(
+data class PartnerDto @JvmOverloads constructor(
 
     var id: String? = null,
     var title: String? = null,

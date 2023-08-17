@@ -5,8 +5,8 @@ import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "galleries")
-data class Gallery @JvmOverloads constructor(
+@Table(name = "partners")
+data class Partner @JvmOverloads constructor(
 
     @Id
     @GeneratedValue(generator = "UUID")
