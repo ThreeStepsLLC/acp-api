@@ -8,7 +8,7 @@ import java.io.IOException;
 public class CodeGenerator {
 
     public static final String GROUP_NAME = "threesteps";
-    public static final String PROJECT_NAME = "acp";
+    public static final String PROJECT_NAME = "acpapi";
     public static final String BASE_PATH = "./src/main/java/com/" + GROUP_NAME + "/" + PROJECT_NAME;
     public static final String BASE_PACKAGE = "com." + GROUP_NAME + "." + PROJECT_NAME + ".";
     public static final String ENTITY_CLASS_NAME_PASCAL_CASE = "User";
