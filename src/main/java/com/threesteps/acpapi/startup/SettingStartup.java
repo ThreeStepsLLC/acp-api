@@ -22,12 +22,16 @@ public class SettingStartup implements CommandLineRunner {
         var constant = new CreateSettingRequest(
                 "az",
                 "mail@gmail.com",
+                "officeAddress",
                 "phone",
                 "https://www.facebook.com",
                 "https://www.linkedin.com",
                 "https://www.instagram.com",
                 "https://www.youtube.com",
-                true
+                "0",
+                "0",
+                "0",
+                "0"
         );
 
         settingService.add(constant);

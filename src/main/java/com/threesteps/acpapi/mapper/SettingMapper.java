@@ -13,13 +13,17 @@ public class SettingMapper {
 
         return new SettingDto(from.getId(),
                 from.getDefaultLanguage(),
-                from.getMailAdressForContact(),
+                from.getMailAddressForContact(),
+                from.getOfficeAddress(),
                 from.getPhone(),
                 from.getFacebook(),
                 from.getLinkedin(),
                 from.getInstagram(),
                 from.getYouTube(),
-                from.getStatus());
+                from.getTotalProjects(),
+                from.getTotalRoad(),
+                from.getTotalTunnels(),
+                from.getTotalBridges());
     }
 
     public Setting toDBO(CreateSettingRequest from) {
@@ -27,13 +31,17 @@ public class SettingMapper {
 
         return new Setting(null,
                 from.getDefaultLanguage(),
-                from.getMailAdressForContact(),
+                from.getMailAddressForContact(),
+                from.getOfficeAddress(),
                 from.getPhone(),
                 from.getFacebook(),
                 from.getLinkedin(),
                 from.getInstagram(),
                 from.getYouTube(),
-                from.getStatus());
+                from.getTotalProjects(),
+                from.getTotalRoad(),
+                from.getTotalTunnels(),
+                from.getTotalBridges());
     }
 
     public Setting toDBO(SettingDto from) {
@@ -41,13 +49,17 @@ public class SettingMapper {
 
         return new Setting(from.getId(),
                 from.getDefaultLanguage(),
-                from.getMailAdressForContact(),
+                from.getMailAddressForContact(),
+                from.getOfficeAddress(),
                 from.getPhone(),
                 from.getFacebook(),
                 from.getLinkedin(),
                 from.getInstagram(),
                 from.getYouTube(),
-                from.getStatus());
+                from.getTotalProjects(),
+                from.getTotalRoad(),
+                from.getTotalTunnels(),
+                from.getTotalBridges());
     }
 
 }

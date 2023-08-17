@@ -18,7 +18,7 @@ public class MailService {
     }
 
     public void sendMail(String subject, String text) {
-        var willSentMail = settingService.get().getMailAdressForContact();
+        var willSentMail = settingService.get().getMailAddressForContact();
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(willSentMail);
         message.setSubject(subject);

@@ -14,7 +14,9 @@ data class Setting @JvmOverloads constructor(
 
     var defaultLanguage: String? = null,
 
-    var mailAdressForContact: String? = null,
+    var mailAddressForContact: String? = null,
+
+    var officeAddress: String? = null,
 
     var phone: String? = null,
 
@@ -26,7 +28,13 @@ data class Setting @JvmOverloads constructor(
 
     var youTube: String? = null,
 
-    var status: Boolean? = null
+    var totalProjects: String? = null,
+
+    var totalRoad: String? = null,
+
+    var totalTunnels: String? = null,
+
+    var totalBridges: String? = null
 
 ) {
 }
