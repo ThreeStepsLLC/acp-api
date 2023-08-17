@@ -16,7 +16,16 @@ public class ConstantStartup implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        String[] constantList = {"about-us"};
+        String[] constantList = {
+                "our-experiences",
+                "who-are-we",
+                "our-values",
+                "our-missions",
+                "our-vision",
+                "slogan",
+                "core-values",
+                "footer-value"
+        };
         for (var constantId : constantList) {
             var constantEntity = constantService.findByIdOptional(constantId);
             if (constantEntity.isPresent()) return;
@@ -26,18 +35,9 @@ public class ConstantStartup implements CommandLineRunner {
                     "titleEN",
                     "titleAZ",
                     "titleRU",
-                    "descriptionEN1",
-                    "descriptionEN2",
-                    "descriptionAZ1",
-                    "descriptionAZ2",
-                    "descriptionRU1",
-                    "descriptionRU2",
-                    "imageUrl",
-                    null,
-                    null,
-                    null,
-                    null);
-
+                    "descriptionEN",
+                    "descriptionAZ",
+                    "descriptionRU");
 
             constantService.add(constant);
         }

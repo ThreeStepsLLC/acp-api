@@ -4,7 +4,8 @@ import com.threesteps.acpapi.dto.ApiResponseDto;
 import com.threesteps.acpapi.dto.ConstantDto;
 import com.threesteps.acpapi.service.ConstantService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin-constants")
@@ -16,17 +17,19 @@ public class AdminConstantController {
         this.constantService = constantService;
     }
 
+    @GetMapping
+    public ApiResponseDto<List<ConstantDto>> getAll() {
+        return new ApiResponseDto<>(constantService.getAll());
+    }
+
     @GetMapping("/{id}")
     public ApiResponseDto<ConstantDto> getById(@PathVariable String id) {
         return new ApiResponseDto<>(constantService.getById(id));
     }
 
     @PutMapping
-    public ApiResponseDto<ConstantDto> update(@ModelAttribute ConstantDto constantDto,
-                                              @RequestParam(name = "file", required = false) MultipartFile file,
-                                              @RequestParam(name = "media1", required = false) MultipartFile media1,
-                                              @RequestParam(name = "media2", required = false) MultipartFile media2) {
-        return new ApiResponseDto<>(constantService.update(constantDto, file, media1, media2));
+    public ApiResponseDto<ConstantDto> update(@RequestBody ConstantDto constantDto) {
+        return new ApiResponseDto<>(constantService.update(constantDto));
     }
 
 }

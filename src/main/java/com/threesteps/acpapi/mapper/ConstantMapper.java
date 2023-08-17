@@ -17,17 +17,9 @@ public class ConstantMapper {
                 from.getTitleEN(),
                 from.getTitleAZ(),
                 from.getTitleRU(),
-                from.getDescriptionEN1(),
-                from.getDescriptionEN2(),
-                from.getDescriptionAZ1(),
-                from.getDescriptionAZ2(),
-                from.getDescriptionRU1(),
-                from.getDescriptionRU2(),
-                from.getImageUrl(),
-                from.getMediaContentUrl1(),
-                from.getMediaContentUrl2(),
-                from.getYouTubeLink1(),
-                from.getYouTubeLink2());
+                from.getDescriptionEN(),
+                from.getDescriptionAZ(),
+                from.getDescriptionRU());
     }
 
     public Constant toDBO(ConstantDto from) {
@@ -37,17 +29,9 @@ public class ConstantMapper {
                 from.getTitleEN(),
                 from.getTitleAZ(),
                 from.getTitleRU(),
-                from.getDescriptionEN1(),
-                from.getDescriptionEN2(),
-                from.getDescriptionAZ1(),
-                from.getDescriptionAZ2(),
-                from.getDescriptionRU1(),
-                from.getDescriptionRU2(),
-                from.getImageUrl(),
-                from.getMediaContentUrl1(),
-                from.getMediaContentUrl2(),
-                from.getYouTubeLink1(),
-                from.getYouTubeLink2());
+                from.getDescriptionEN(),
+                from.getDescriptionAZ(),
+                from.getDescriptionRU());
     }
 
     public ConstantLangedDto toConstantLangedDto(Constant from, String language) {
@@ -57,13 +41,7 @@ public class ConstantMapper {
             return new ConstantLangedDto(
                     from.getId(),
                     from.getTitleAZ(),
-                    from.getDescriptionAZ1(),
-                    from.getDescriptionAZ2(),
-                    from.getImageUrl(),
-                    from.getMediaContentUrl1(),
-                    from.getMediaContentUrl2(),
-                    from.getYouTubeLink1(),
-                    from.getYouTubeLink2()
+                    from.getDescriptionAZ()
             );
         }
 
@@ -71,26 +49,14 @@ public class ConstantMapper {
             return new ConstantLangedDto(
                     from.getId(),
                     from.getTitleRU(),
-                    from.getDescriptionRU1(),
-                    from.getDescriptionRU2(),
-                    from.getImageUrl(),
-                    from.getMediaContentUrl1(),
-                    from.getMediaContentUrl2(),
-                    from.getYouTubeLink1(),
-                    from.getYouTubeLink2()
+                    from.getDescriptionRU()
             );
         }
 
         return new ConstantLangedDto(
                 from.getId(),
                 from.getTitleEN(),
-                from.getDescriptionEN1(),
-                from.getDescriptionEN2(),
-                from.getImageUrl(),
-                from.getMediaContentUrl1(),
-                from.getMediaContentUrl2(),
-                from.getYouTubeLink1(),
-                from.getYouTubeLink2()
+                from.getDescriptionEN()
         );
     }
 
