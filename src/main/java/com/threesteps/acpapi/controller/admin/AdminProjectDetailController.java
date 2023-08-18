@@ -1,4 +1,4 @@
-package com.threesteps.acpapi.controller;
+package com.threesteps.acpapi.controller.admin;
 
 import com.threesteps.acpapi.dto.ProjectDetailDto;
 import com.threesteps.acpapi.dto.ApiResponseDto;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/project_detail")
-public class ProjectDetailController {
+@RequestMapping("/api/v1/admin-project-details")
+public class AdminProjectDetailController {
 
     private final ProjectDetailService projectDetailService;
 
-    public ProjectDetailController(ProjectDetailService projectDetailService) {
+    public AdminProjectDetailController(ProjectDetailService projectDetailService) {
         this.projectDetailService = projectDetailService;
     }
 
