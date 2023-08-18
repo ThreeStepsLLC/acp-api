@@ -11,9 +11,9 @@ public class CodeGenerator {
     public static final String PROJECT_NAME = "acpapi";
     public static final String BASE_PATH = "./src/main/java/com/" + GROUP_NAME + "/" + PROJECT_NAME;
     public static final String BASE_PACKAGE = "com." + GROUP_NAME + "." + PROJECT_NAME + ".";
-    public static final String ENTITY_CLASS_NAME_PASCAL_CASE = "User";
-    public static final String TABLE_NAME = "users";
-    public static final String API_ROUTE = "users";
+    public static final String ENTITY_CLASS_NAME_PASCAL_CASE = "Position";
+    public static final String TABLE_NAME = "positions";
+    public static final String API_ROUTE = "positions";
 
 
     public static void main(String[] args) throws IOException {
