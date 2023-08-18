@@ -14,6 +14,8 @@ enum class Permissions(
     FOOTER_VALUE("footer-value", "Footer dəyəri"),
     PROJECTS("projects", "Layihələr"),
     PARTNERS("partners", "Partnyorlar"),
+    POSITIONS("positions", "Vəzifələr"),
+    VACANCIES("vacancies", "Vakansiyalar"),
     USERS("users", "İstifadəçilər"),
     SETTINGS("settings", "Ayarlar")
 }
