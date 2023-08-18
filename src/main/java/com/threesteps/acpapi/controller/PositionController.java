@@ -1,11 +1,11 @@
 package com.threesteps.acpapi.controller;
 
-import com.threesteps.acpapi.dto.PositionDto;
 import com.threesteps.acpapi.dto.ApiResponseDto;
-import com.threesteps.acpapi.dto.CreatePositionRequest;
+import com.threesteps.acpapi.dto.PositionDto;
 import com.threesteps.acpapi.service.PositionService;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,29 +22,6 @@ public class PositionController {
     @GetMapping
     public ApiResponseDto<List<PositionDto>> getAll() {
         return new ApiResponseDto<>(positionService.getAll());
-    }
-
-    @GetMapping("/{id}")
-    public ApiResponseDto<PositionDto> getById(@PathVariable String id) {
-        return new ApiResponseDto<>(positionService.getById(id));
-    }
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public ApiResponseDto<?> add(@RequestBody CreatePositionRequest request) {
-        positionService.add(request);
-        return new ApiResponseDto<>(null);
-    }
-
-    @PutMapping
-    public ApiResponseDto<PositionDto> update(@RequestBody PositionDto positionDto) {
-        return new ApiResponseDto<>(positionService.update(positionDto));
-    }
-
-    @DeleteMapping("/{id}")
-    public ApiResponseDto<?> deleteById(@PathVariable String id) {
-        positionService.deleteById(id);
-        return new ApiResponseDto<>(null);
     }
 
 }
