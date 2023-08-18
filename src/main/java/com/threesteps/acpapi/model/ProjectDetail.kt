@@ -12,7 +12,12 @@ data class ProjectDetail @JvmOverloads constructor(
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     var id: String? = null,
 
-    var title: String? = null
+    var title: String? = null,
+
+    var value: String? = null,
+
+    @ManyToOne
+    var project: Project? = null
 
 ) {
 }

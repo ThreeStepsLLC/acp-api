@@ -20,33 +20,11 @@ public class VacancyController {
         this.vacancyService = vacancyService;
     }
 
-    @GetMapping
-    public ApiResponseDto<List<VacancyDto>> getAll() {
-        return new ApiResponseDto<>(vacancyService.getAll());
-    }
-
-    @GetMapping("/{id}")
-    public ApiResponseDto<VacancyDto> getById(@PathVariable String id) {
-        return new ApiResponseDto<>(vacancyService.getById(id));
-    }
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ApiResponseDto<?> add(@ModelAttribute CreateVacancyRequest request,
                                  @RequestParam(name = "file") MultipartFile file) {
         vacancyService.add(request, file);
-        return new ApiResponseDto<>(null);
-    }
-
-    @PutMapping
-    public ApiResponseDto<VacancyDto> update(@ModelAttribute VacancyDto vacancyDto,
-                                             @RequestParam(name = "file") MultipartFile file) {
-        return new ApiResponseDto<>(vacancyService.update(vacancyDto, file));
-    }
-
-    @DeleteMapping("/{id}")
-    public ApiResponseDto<?> deleteById(@PathVariable String id) {
-        vacancyService.deleteById(id);
         return new ApiResponseDto<>(null);
     }
 
