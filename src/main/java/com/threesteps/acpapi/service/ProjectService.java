@@ -1,14 +1,13 @@
 package com.threesteps.acpapi.service;
 
-import com.threesteps.acpapi.dto.ProjectDto;
-import com.threesteps.acpapi.dto.CreateProjectRequest;
-import com.threesteps.acpapi.dto.ProjectLangedDto;
+import com.threesteps.acpapi.dto.*;
 import com.threesteps.acpapi.exception.NotFoundException;
 import com.threesteps.acpapi.mapper.ProjectMapper;
 import com.threesteps.acpapi.model.Project;
 import com.threesteps.acpapi.repository.ProjectRepository;
 import com.threesteps.acpapi.service.helper.FileService;
 import com.threesteps.acpapi.util.helper.FilePathHelper;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,13 +21,19 @@ public class ProjectService {
     private final ProjectRepository repository;
     private final ProjectMapper projectMapper;
     private final FileService fileService;
+    private final ProjectImageService projectImageService;
+    private final ProjectDetailService projectDetailService;
 
     public ProjectService(ProjectRepository repository,
                           ProjectMapper projectMapper,
-                          FileService fileService) {
+                          FileService fileService,
+                          ProjectImageService projectImageService,
+                          ProjectDetailService projectDetailService) {
         this.repository = repository;
         this.projectMapper = projectMapper;
         this.fileService = fileService;
+        this.projectImageService = projectImageService;
+        this.projectDetailService = projectDetailService;
     }
 
     public List<ProjectDto> getAll() {
@@ -76,14 +81,39 @@ public class ProjectService {
         return dto;
     }
 
-    public void add(CreateProjectRequest request, MultipartFile file) {
+    @Transactional
+    public void add(CreateProjectRequest request, MultipartFile file, List<MultipartFile> galleryImages) {
         if (file != null) {
             request.setImageUrl(fileService.saveFile(file));
         }
 
         request.setCreateDate(LocalDateTime.now());
         request.setStatus(true);
-        repository.save(projectMapper.toDBO(request));
+        var entity = repository.save(projectMapper.toDBO(request));
+
+        if (request.getProjectDetails() != null) {
+            for (var projectDetail : request.getProjectDetails()) {
+                var createRequest = new CreateProjectDetailRequest(
+                        projectDetail.getTitleEN(),
+                        projectDetail.getTitleAZ(),
+                        projectDetail.getTitleRU(),
+                        projectDetail.getDescriptionEN(),
+                        projectDetail.getDescriptionAZ(),
+                        projectDetail.getDescriptionRU(),
+                        new ProjectDto(entity.getId()));
+                projectDetailService.add(createRequest);
+            }
+        }
+
+        if (galleryImages != null) {
+            for (var image : galleryImages) {
+                var path = fileService.saveFile(image);
+                var createRequest = new CreateProjectImageRequest(path,
+                        new ProjectDto(entity.getId()));
+                projectImageService.add(createRequest);
+            }
+        }
+
     }
 
     public ProjectDto update(ProjectDto projectDto, MultipartFile file) {

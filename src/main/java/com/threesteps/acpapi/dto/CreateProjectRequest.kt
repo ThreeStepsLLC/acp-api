@@ -15,7 +15,8 @@ data class CreateProjectRequest @JvmOverloads constructor(
     var descriptionRU: String? = null,
     var imageUrl: String? = null,
     var createDate: LocalDateTime? = null,
-    var status: Boolean? = null
+    var status: Boolean? = null,
+    var projectDetails: List<CreateProjectDetailRequest>? = ArrayList()
 
 ) {
 }

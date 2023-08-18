@@ -33,14 +33,15 @@ public class AdminProjectController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ApiResponseDto<?> add(@ModelAttribute CreateProjectRequest request,
-                                 @RequestParam(name = "file") MultipartFile file) {
-        projectService.add(request, file);
+                                 @RequestParam(name = "file") MultipartFile file,
+                                 @RequestParam(name = "galleryImages", required = false) List<MultipartFile> galleryImages) {
+        projectService.add(request, file, galleryImages);
         return new ApiResponseDto<>(null);
     }
 
     @PutMapping
     public ApiResponseDto<ProjectDto> update(@ModelAttribute ProjectDto projectDto,
-                                                @RequestParam(name = "file", required = false) MultipartFile file) {
+                                             @RequestParam(name = "file", required = false) MultipartFile file) {
         return new ApiResponseDto<>(projectService.update(projectDto, file));
     }
 
