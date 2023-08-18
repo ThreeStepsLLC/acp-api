@@ -2,6 +2,7 @@ package com.threesteps.acpapi.service;
 
 import com.threesteps.acpapi.dto.PositionDto;
 import com.threesteps.acpapi.dto.CreatePositionRequest;
+import com.threesteps.acpapi.dto.PositionLangedDto;
 import com.threesteps.acpapi.exception.NotFoundException;
 import com.threesteps.acpapi.mapper.PositionMapper;
 import com.threesteps.acpapi.model.Position;
@@ -25,6 +26,13 @@ public class PositionService {
         return repository.findAll()
                 .stream()
                 .map(positionMapper::toDTO)
+                .toList();
+    }
+
+    public List<PositionLangedDto> getAllLanged(String language) {
+        return repository.findAll()
+                .stream()
+                .map(x -> positionMapper.toConstantLangedDto(x, language))
                 .toList();
     }
 
