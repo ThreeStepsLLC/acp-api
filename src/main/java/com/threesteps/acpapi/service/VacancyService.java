@@ -27,7 +27,7 @@ public class VacancyService {
     }
 
     public List<VacancyDto> getAll() {
-        return repository.findAll()
+        return repository.findAllByOrderByCreateDateDesc()
                 .stream()
                 .map(vacancyMapper::toDTO)
                 .toList();
