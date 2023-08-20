@@ -84,8 +84,10 @@ public class PartnerService {
     }
 
     public PartnerDto update(PartnerDto partnerDto, MultipartFile file) {
+        var entityInDb = findById(partnerDto.getId());
+        partnerDto.setImageUrl(fileService.saveFile(file));
+
         if (file != null) {
-            var entityInDb = findById(partnerDto.getId());
             fileService.deleteFile(entityInDb.getImageUrl());
             partnerDto.setImageUrl(fileService.saveFile(file));
         }
