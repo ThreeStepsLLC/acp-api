@@ -8,6 +8,7 @@ data class ProjectGalleryDetailLangedDto @JvmOverloads constructor(
     var title: String? = null,
     var address: String? = null,
     var description: String? = null,
+    var progress: Double? = null,
     var imageUrl: String? = null,
     var createDate: LocalDateTime? = null,
     var status: Boolean? = null,

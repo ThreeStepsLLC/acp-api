@@ -34,6 +34,8 @@ data class Project @JvmOverloads constructor(
     @Column(length = 10000)
     var descriptionRU: String? = null,
 
+    var progress: Double? = null,
+
     var imageUrl: String? = null,
 
     var createDate: LocalDateTime? = null,

@@ -22,6 +22,7 @@ public class ProjectMapper {
                 from.getDescriptionEN(),
                 from.getDescriptionAZ(),
                 from.getDescriptionRU(),
+                from.getProgress(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus());
@@ -40,6 +41,7 @@ public class ProjectMapper {
                 from.getDescriptionEN(),
                 from.getDescriptionAZ(),
                 from.getDescriptionRU(),
+                from.getProgress(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus());
@@ -58,6 +60,7 @@ public class ProjectMapper {
                 from.getDescriptionEN(),
                 from.getDescriptionAZ(),
                 from.getDescriptionRU(),
+                from.getProgress(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus());
@@ -76,6 +79,7 @@ public class ProjectMapper {
                 from.getDescriptionEN(),
                 from.getDescriptionAZ(),
                 from.getDescriptionRU(),
+                from.getProgress(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus(),
@@ -92,6 +96,7 @@ public class ProjectMapper {
                     from.getDescriptionAZ(),
                     from.getAddressAZ(),
                     from.getImageUrl(),
+                    from.getProgress(),
                     from.getCreateDate(),
                     from.getStatus());
         }
@@ -102,6 +107,7 @@ public class ProjectMapper {
                     from.getDescriptionRU(),
                     from.getAddressRU(),
                     from.getImageUrl(),
+                    from.getProgress(),
                     from.getCreateDate(),
                     from.getStatus());
         }
@@ -111,6 +117,7 @@ public class ProjectMapper {
                 from.getDescriptionEN(),
                 from.getAddressEN(),
                 from.getImageUrl(),
+                from.getProgress(),
                 from.getCreateDate(),
                 from.getStatus());
 
@@ -124,6 +131,7 @@ public class ProjectMapper {
                     from.getTitleAZ(),
                     from.getAddressAZ(),
                     from.getDescriptionAZ(),
+                    from.getProgress(),
                     from.getImageUrl(),
                     from.getCreateDate(),
                     from.getStatus(),
@@ -136,6 +144,7 @@ public class ProjectMapper {
                     from.getTitleRU(),
                     from.getAddressRU(),
                     from.getDescriptionRU(),
+                    from.getProgress(),
                     from.getImageUrl(),
                     from.getCreateDate(),
                     from.getStatus(),
@@ -147,6 +156,7 @@ public class ProjectMapper {
                 from.getTitleEN(),
                 from.getAddressEN(),
                 from.getDescriptionEN(),
+                from.getProgress(),
                 from.getImageUrl(),
                 from.getCreateDate(),
                 from.getStatus(),

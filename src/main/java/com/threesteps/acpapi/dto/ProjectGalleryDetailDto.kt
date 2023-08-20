@@ -14,6 +14,7 @@ data class ProjectGalleryDetailDto @JvmOverloads constructor(
     var descriptionEN: String? = null,
     var descriptionAZ: String? = null,
     var descriptionRU: String? = null,
+    var progress: Double? = null,
     var imageUrl: String? = null,
     var createDate: LocalDateTime? = null,
     var status: Boolean? = null,

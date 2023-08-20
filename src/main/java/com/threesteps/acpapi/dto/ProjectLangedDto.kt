@@ -9,6 +9,7 @@ data class ProjectLangedDto @JvmOverloads constructor(
     var address: String? = null,
     var description: String? = null,
     var imageUrl: String? = null,
+    var progress: Double? = null,
     var createDate: LocalDateTime? = null,
     var status: Boolean? = null
 
