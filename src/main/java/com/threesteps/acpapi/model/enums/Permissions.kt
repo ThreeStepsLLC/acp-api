@@ -15,6 +15,7 @@ enum class Permissions(
     PROJECTS("projects", "Layihələr"),
     PARTNERS("partners", "Partnyorlar"),
     POSITIONS("positions", "Vəzifələr"),
+    SLIDER_IMAGES("slider-images", "Slider şəkilləri"),
     VACANCIES("vacancies", "Vakansiyalar"),
     USERS("users", "İstifadəçilər"),
     SETTINGS("settings", "Ayarlar")
