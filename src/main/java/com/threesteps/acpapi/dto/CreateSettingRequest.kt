@@ -10,6 +10,8 @@ data class CreateSettingRequest @JvmOverloads constructor(
     var linkedin: String? = null,
     var instagram: String? = null,
     var youTube: String? = null,
+    var twitter: String? = null,
+    var whatsapp: String? = null,
     var totalProjects: String? = null,
     var totalRoad: String? = null,
     var totalTunnels: String? = null,

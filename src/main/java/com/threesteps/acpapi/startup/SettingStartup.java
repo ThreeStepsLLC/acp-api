@@ -28,6 +28,8 @@ public class SettingStartup implements CommandLineRunner {
                 "https://www.linkedin.com",
                 "https://www.instagram.com",
                 "https://www.youtube.com",
+                "https://www.twitter.com",
+                "https://www.whatsapp.com",
                 "0",
                 "0",
                 "0",

@@ -28,6 +28,10 @@ data class Setting @JvmOverloads constructor(
 
     var youTube: String? = null,
 
+    var twitter: String? = null,
+
+    var whatsapp: String? = null,
+
     var totalProjects: String? = null,
 
     var totalRoad: String? = null,
