@@ -1,7 +1,6 @@
 package com.threesteps.acpapi.service;
 
-import com.threesteps.acpapi.dto.ProjectDetailDto;
-import com.threesteps.acpapi.dto.CreateProjectDetailRequest;
+import com.threesteps.acpapi.dto.*;
 import com.threesteps.acpapi.exception.NotFoundException;
 import com.threesteps.acpapi.mapper.ProjectDetailMapper;
 import com.threesteps.acpapi.model.ProjectDetail;
@@ -25,6 +24,20 @@ public class ProjectDetailService {
         return repository.findAll()
                 .stream()
                 .map(projectDetailMapper::toDTO)
+                .toList();
+    }
+
+    public List<ProjectDetailViewDto> getAllByProjectId(String projectId) {
+        return repository.findAllByProjectId(projectId)
+                .stream()
+                .map(projectDetailMapper::toProjectDetailViewDto)
+                .toList();
+    }
+
+    public List<ProjectDetailLangedViewDto> getAllLangedByProjectId(String projectId, String language) {
+        return repository.findAllByProjectId(projectId)
+                .stream()
+                .map(x -> projectDetailMapper.toProjectDetailLangedViewDto(x, language))
                 .toList();
     }
 

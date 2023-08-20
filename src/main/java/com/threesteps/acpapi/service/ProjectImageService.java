@@ -2,6 +2,7 @@ package com.threesteps.acpapi.service;
 
 import com.threesteps.acpapi.dto.ProjectImageDto;
 import com.threesteps.acpapi.dto.CreateProjectImageRequest;
+import com.threesteps.acpapi.dto.ProjectImageViewDto;
 import com.threesteps.acpapi.exception.NotFoundException;
 import com.threesteps.acpapi.mapper.ProjectImageMapper;
 import com.threesteps.acpapi.model.ProjectImage;
@@ -9,6 +10,7 @@ import com.threesteps.acpapi.repository.ProjectImageRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectImageService {
@@ -35,6 +37,13 @@ public class ProjectImageService {
 
     public ProjectImageDto getById(String id) {
         return projectImageMapper.toDTO(findById(id));
+    }
+
+    public List<ProjectImageViewDto> getAllByProjectId(String projectId) {
+        return repository.findAllByProjectId(projectId)
+                .stream()
+                .map(projectImageMapper::toProjectImageViewDto)
+                .toList();
     }
 
     public void add(CreateProjectImageRequest request) {

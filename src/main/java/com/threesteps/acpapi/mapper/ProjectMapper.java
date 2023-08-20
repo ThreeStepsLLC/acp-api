@@ -1,8 +1,6 @@
 package com.threesteps.acpapi.mapper;
 
-import com.threesteps.acpapi.dto.ProjectDto;
-import com.threesteps.acpapi.dto.CreateProjectRequest;
-import com.threesteps.acpapi.dto.ProjectLangedDto;
+import com.threesteps.acpapi.dto.*;
 import com.threesteps.acpapi.model.Project;
 import org.springframework.stereotype.Component;
 
@@ -65,6 +63,26 @@ public class ProjectMapper {
                 from.getStatus());
     }
 
+    public ProjectGalleryDetailDto toProjectGalleryDetailDto(Project from) {
+        if (from == null) return null;
+
+        return new ProjectGalleryDetailDto(from.getId(),
+                from.getTitleEN(),
+                from.getTitleAZ(),
+                from.getTitleRU(),
+                from.getAddressEN(),
+                from.getAddressAZ(),
+                from.getAddressRU(),
+                from.getDescriptionEN(),
+                from.getDescriptionAZ(),
+                from.getDescriptionRU(),
+                from.getImageUrl(),
+                from.getCreateDate(),
+                from.getStatus(),
+                null,
+                null);
+    }
+
     public ProjectLangedDto toProjectLangedDto(Project from, String language) {
         if (from == null) return null;
 
@@ -96,6 +114,44 @@ public class ProjectMapper {
                 from.getCreateDate(),
                 from.getStatus());
 
+    }
+
+    public ProjectGalleryDetailLangedDto toProjectGalleryDetailLangedDto(Project from, String language) {
+        if (from == null) return null;
+
+        if (Objects.equals(language, "az")) {
+            return new ProjectGalleryDetailLangedDto(from.getId(),
+                    from.getTitleAZ(),
+                    from.getAddressAZ(),
+                    from.getDescriptionAZ(),
+                    from.getImageUrl(),
+                    from.getCreateDate(),
+                    from.getStatus(),
+                    null,
+                    null);
+        }
+
+        if (Objects.equals(language, "ru")) {
+            return new ProjectGalleryDetailLangedDto(from.getId(),
+                    from.getTitleRU(),
+                    from.getAddressRU(),
+                    from.getDescriptionRU(),
+                    from.getImageUrl(),
+                    from.getCreateDate(),
+                    from.getStatus(),
+                    null,
+                    null);
+        }
+
+        return new ProjectGalleryDetailLangedDto(from.getId(),
+                from.getTitleEN(),
+                from.getAddressEN(),
+                from.getDescriptionEN(),
+                from.getImageUrl(),
+                from.getCreateDate(),
+                from.getStatus(),
+                null,
+                null);
     }
 
 }

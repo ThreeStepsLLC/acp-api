@@ -3,6 +3,7 @@ package com.threesteps.acpapi.controller.admin;
 import com.threesteps.acpapi.dto.ApiResponseDto;
 import com.threesteps.acpapi.dto.CreateProjectRequest;
 import com.threesteps.acpapi.dto.ProjectDto;
+import com.threesteps.acpapi.dto.ProjectGalleryDetailDto;
 import com.threesteps.acpapi.service.ProjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,8 @@ public class AdminProjectController {
     }
 
     @GetMapping("/{id}")
-    public ApiResponseDto<ProjectDto> getById(@PathVariable String id) {
-        return new ApiResponseDto<>(projectService.getById(id));
+    public ApiResponseDto<ProjectGalleryDetailDto> getById(@PathVariable String id) {
+        return new ApiResponseDto<>(projectService.getDetailAndGalleryById(id));
     }
 
     @ResponseStatus(HttpStatus.CREATED)

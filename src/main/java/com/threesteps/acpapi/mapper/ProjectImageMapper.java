@@ -3,6 +3,7 @@ package com.threesteps.acpapi.mapper;
 import com.threesteps.acpapi.dto.ProjectDto;
 import com.threesteps.acpapi.dto.ProjectImageDto;
 import com.threesteps.acpapi.dto.CreateProjectImageRequest;
+import com.threesteps.acpapi.dto.ProjectImageViewDto;
 import com.threesteps.acpapi.model.ProjectImage;
 import org.springframework.stereotype.Component;
 
@@ -38,6 +39,14 @@ public class ProjectImageMapper {
         return new ProjectImage(from.getId(),
                 from.getPath(),
                 projectMapper.toDBO(from.getProject()));
+    }
+
+    public ProjectImageViewDto toProjectImageViewDto(ProjectImage from) {
+        if (from == null) return null;
+
+
+        return new ProjectImageViewDto(from.getId(),
+                from.getPath());
     }
 
 }

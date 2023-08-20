@@ -48,19 +48,11 @@ public class ProjectService {
     }
 
     public List<ProjectLangedDto> getLastLanged(String language, Integer count) {
-        return count != null
-                ? repository
-                .findAllByOrderByCreateDateDesc(PageRequest.of(0, count))
-                .stream()
-                .map(x -> {
-                    var dto = projectMapper.toProjectLangedDto(x, language);
-                    dto.setImageUrl(FilePathHelper.combineForMedia(dto.getImageUrl()));
-                    return dto;
-                })
-                .toList()
+        var entityList = count != null
+                ? repository.findAllByOrderByCreateDateDesc(PageRequest.of(0, count))
+                : repository.findAllByOrderByCreateDateDesc();
 
-                : repository
-                .findAllByOrderByCreateDateDesc()
+        return entityList
                 .stream()
                 .map(x -> {
                     var dto = projectMapper.toProjectLangedDto(x, language);
@@ -78,6 +70,22 @@ public class ProjectService {
     public ProjectDto getById(String id) {
         var dto = projectMapper.toDTO(findById(id));
         dto.setImageUrl(FilePathHelper.combineForMedia(dto.getImageUrl()));
+        return dto;
+    }
+
+    public ProjectGalleryDetailDto getDetailAndGalleryById(String id) {
+        var dto = projectMapper.toProjectGalleryDetailDto(findById(id));
+        dto.setImageUrl(FilePathHelper.combineForMedia(dto.getImageUrl()));
+        dto.setGalleryImages(projectImageService.getAllByProjectId(dto.getId()));
+        dto.setProjectDetails(projectDetailService.getAllByProjectId(dto.getId()));
+        return dto;
+    }
+
+    public ProjectGalleryDetailLangedDto getDetailAndGalleryLangedById(String id, String language) {
+        var dto = projectMapper.toProjectGalleryDetailLangedDto(findById(id), language);
+        dto.setImageUrl(FilePathHelper.combineForMedia(dto.getImageUrl()));
+        dto.setGalleryImages(projectImageService.getAllByProjectId(dto.getId()));
+        dto.setProjectDetails(projectDetailService.getAllLangedByProjectId(dto.getId(), language));
         return dto;
     }
 

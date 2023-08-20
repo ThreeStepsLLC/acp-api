@@ -1,9 +1,6 @@
 package com.threesteps.acpapi.mapper;
 
-import com.threesteps.acpapi.dto.CreateProjectDetailRequest;
-import com.threesteps.acpapi.dto.ProjectDetailDto;
-import com.threesteps.acpapi.dto.ProjectDetailLangedDto;
-import com.threesteps.acpapi.dto.ProjectDto;
+import com.threesteps.acpapi.dto.*;
 import com.threesteps.acpapi.model.ProjectDetail;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +26,18 @@ public class ProjectDetailMapper {
                 from.getDescriptionAZ(),
                 from.getDescriptionRU(),
                 projectMapper.toDTO(from.getProject()));
+    }
+
+    public ProjectDetailViewDto toProjectDetailViewDto(ProjectDetail from) {
+        if (from == null) return null;
+
+        return new ProjectDetailViewDto(from.getId(),
+                from.getTitleEN(),
+                from.getTitleAZ(),
+                from.getTitleRU(),
+                from.getDescriptionEN(),
+                from.getDescriptionAZ(),
+                from.getDescriptionRU());
     }
 
     public ProjectDetail toDBO(CreateProjectDetailRequest from) {
@@ -57,7 +66,7 @@ public class ProjectDetailMapper {
                 projectMapper.toDBO(from.getProject()));
     }
 
-    public ProjectDetailLangedDto toConstantLangedDto(ProjectDetail from, String language) {
+    public ProjectDetailLangedDto toProjectDetailLangedDto(ProjectDetail from, String language) {
         if (from == null) return null;
 
         if (Objects.equals(language, "az")) {
@@ -84,6 +93,30 @@ public class ProjectDetailMapper {
                 from.getDescriptionEN(),
                 projectMapper.toDTO(from.getProject())
         );
+    }
+
+    public ProjectDetailLangedViewDto toProjectDetailLangedViewDto(ProjectDetail from, String language) {
+        if (from == null) return null;
+
+        if (Objects.equals(language, "az")) {
+            return new ProjectDetailLangedViewDto(
+                    from.getId(),
+                    from.getTitleAZ(),
+                    from.getDescriptionAZ());
+        }
+
+        if (Objects.equals(language, "ru")) {
+            return new ProjectDetailLangedViewDto(
+                    from.getId(),
+                    from.getTitleRU(),
+                    from.getDescriptionRU()
+            );
+        }
+
+        return new ProjectDetailLangedViewDto(
+                from.getId(),
+                from.getTitleEN(),
+                from.getDescriptionEN());
     }
 
 }

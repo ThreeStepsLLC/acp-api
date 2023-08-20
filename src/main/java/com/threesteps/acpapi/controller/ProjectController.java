@@ -1,6 +1,7 @@
 package com.threesteps.acpapi.controller;
 
 import com.threesteps.acpapi.dto.ApiResponseDto;
+import com.threesteps.acpapi.dto.ProjectGalleryDetailLangedDto;
 import com.threesteps.acpapi.dto.ProjectLangedDto;
 import com.threesteps.acpapi.service.ProjectService;
 import com.threesteps.acpapi.service.helper.LanguageService;
@@ -33,9 +34,9 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}")
-    public ApiResponseDto<ProjectLangedDto> getByIdLanged(@PathVariable String id) {
+    public ApiResponseDto<ProjectGalleryDetailLangedDto> getByIdLanged(@PathVariable String id) {
         var language = languageService.getLanguage();
-        return new ApiResponseDto<>(projectService.getByIdLanged(id, language));
+        return new ApiResponseDto<>(projectService.getDetailAndGalleryLangedById(id, language));
     }
 
 }
