@@ -64,6 +64,8 @@ public class VacancyService {
     }
 
     public void deleteById(String id) {
+        var entity = findById(id);
+        fileService.deleteFile(entity.getCvFilePath());
         repository.deleteById(id);
     }
 

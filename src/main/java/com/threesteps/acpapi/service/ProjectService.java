@@ -116,12 +116,21 @@ public class ProjectService {
 
     }
 
-    public ProjectDto update(ProjectDto projectDto, MultipartFile file) {
+    public ProjectDto update(ProjectDto projectDto, MultipartFile file, List<MultipartFile> galleryImages) {
         var entityInDb = findById(projectDto.getId());
         projectDto.setImageUrl(entityInDb.getImageUrl());
         if (file != null) {
             fileService.deleteFile(projectDto.getImageUrl());
             projectDto.setImageUrl(fileService.saveFile(file));
+        }
+
+        if (galleryImages != null) {
+            for (var image : galleryImages) {
+                var path = fileService.saveFile(image);
+                var createRequest = new CreateProjectImageRequest(path,
+                        new ProjectDto(entityInDb.getId()));
+                projectImageService.add(createRequest);
+            }
         }
 
         var entity = projectMapper.toDBO(projectDto);

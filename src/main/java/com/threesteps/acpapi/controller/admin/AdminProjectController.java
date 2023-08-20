@@ -41,8 +41,9 @@ public class AdminProjectController {
 
     @PutMapping
     public ApiResponseDto<ProjectDto> update(@ModelAttribute ProjectDto projectDto,
-                                             @RequestParam(name = "file", required = false) MultipartFile file) {
-        return new ApiResponseDto<>(projectService.update(projectDto, file));
+                                             @RequestParam(name = "file", required = false) MultipartFile file,
+                                             @RequestParam(name = "galleryImages", required = false) List<MultipartFile> galleryImages) {
+        return new ApiResponseDto<>(projectService.update(projectDto, file, galleryImages));
     }
 
     @DeleteMapping("/{id}")
