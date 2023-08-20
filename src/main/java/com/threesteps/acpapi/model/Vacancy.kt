@@ -19,6 +19,8 @@ data class Vacancy @JvmOverloads constructor(
 
     var city: String? = null,
 
+    var phone: String? = null,
+
     @ManyToOne
     var position: Position? = null,
 

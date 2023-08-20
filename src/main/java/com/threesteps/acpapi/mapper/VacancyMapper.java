@@ -22,6 +22,7 @@ public class VacancyMapper {
                 from.getFullName(),
                 from.getMail(),
                 from.getCity(),
+                from.getPhone(),
                 positionMapper.toDTO(from.getPosition()),
                 from.getCvFilePath(),
                 from.getCreateDate());
@@ -34,6 +35,7 @@ public class VacancyMapper {
                 from.getFullName(),
                 from.getMail(),
                 from.getCity(),
+                from.getPhone(),
                 positionMapper.toDBO(new PositionDto(from.getPosition().getId())),
                 from.getCvFilePath(),
                 from.getCreateDate());
@@ -46,6 +48,7 @@ public class VacancyMapper {
                 from.getFullName(),
                 from.getMail(),
                 from.getCity(),
+                from.getPhone(),
                 positionMapper.toDBO(from.getPosition()),
                 from.getCvFilePath(),
                 from.getCreateDate());
