@@ -1,9 +1,6 @@
 package com.threesteps.acpapi.controller.admin;
 
-import com.threesteps.acpapi.dto.ApiResponseDto;
-import com.threesteps.acpapi.dto.CreateProjectRequest;
-import com.threesteps.acpapi.dto.ProjectDto;
-import com.threesteps.acpapi.dto.ProjectGalleryDetailDto;
+import com.threesteps.acpapi.dto.*;
 import com.threesteps.acpapi.service.ProjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +38,7 @@ public class AdminProjectController {
     }
 
     @PutMapping
-    public ApiResponseDto<ProjectDto> update(@ModelAttribute ProjectDto projectDto,
+    public ApiResponseDto<ProjectDto> update(@ModelAttribute UpdateProjectRequest projectDto,
                                              @RequestParam(name = "file", required = false) MultipartFile file,
                                              @RequestParam(name = "galleryImages", required = false) List<MultipartFile> galleryImages) {
         return new ApiResponseDto<>(projectService.update(projectDto, file, galleryImages));

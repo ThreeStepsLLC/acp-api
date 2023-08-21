@@ -164,4 +164,20 @@ public class ProjectMapper {
                 null);
     }
 
+    public Project toDBO(UpdateProjectRequest from) {
+        return new Project(from.getId(),
+                from.getTitleEN(),
+                from.getTitleAZ(),
+                from.getTitleRU(),
+                from.getAddressEN(),
+                from.getAddressAZ(),
+                from.getAddressRU(),
+                from.getDescriptionEN(),
+                from.getDescriptionAZ(),
+                from.getDescriptionRU(),
+                from.getProgress(),
+                from.getImageUrl(),
+                from.getCreateDate(),
+                from.getStatus());
+    }
 }

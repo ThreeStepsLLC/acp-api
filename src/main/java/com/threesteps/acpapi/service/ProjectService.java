@@ -124,12 +124,12 @@ public class ProjectService {
 
     }
 
-    public ProjectDto update(ProjectDto projectDto, MultipartFile file, List<MultipartFile> galleryImages) {
-        var entityInDb = findById(projectDto.getId());
-        projectDto.setImageUrl(entityInDb.getImageUrl());
+    public ProjectDto update(UpdateProjectRequest request, MultipartFile file, List<MultipartFile> galleryImages) {
+        var entityInDb = findById(request.getId());
+        request.setImageUrl(entityInDb.getImageUrl());
         if (file != null) {
-            fileService.deleteFile(projectDto.getImageUrl());
-            projectDto.setImageUrl(fileService.saveFile(file));
+            fileService.deleteFile(request.getImageUrl());
+            request.setImageUrl(fileService.saveFile(file));
         }
 
         if (galleryImages != null) {
@@ -141,7 +141,24 @@ public class ProjectService {
             }
         }
 
-        var entity = projectMapper.toDBO(projectDto);
+        if (request.getProjectDetails() != null) {
+            var projectDetails = projectDetailService.getAllByProjectId(entityInDb.getId());
+            projectDetails.forEach(x -> projectDetailService.deleteById(x.getId()));
+
+            for (var projectDetail : request.getProjectDetails()) {
+                var createRequest = new CreateProjectDetailRequest(
+                        projectDetail.getTitleEN(),
+                        projectDetail.getTitleAZ(),
+                        projectDetail.getTitleRU(),
+                        projectDetail.getDescriptionEN(),
+                        projectDetail.getDescriptionAZ(),
+                        projectDetail.getDescriptionRU(),
+                        new ProjectDto(entityInDb.getId()));
+                projectDetailService.add(createRequest);
+            }
+        }
+
+        var entity = projectMapper.toDBO(request);
         repository.save(entity);
         return projectMapper.toDTO(entity);
     }
