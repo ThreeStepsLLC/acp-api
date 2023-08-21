@@ -93,8 +93,8 @@ public class ProjectMapper {
         if (Objects.equals(language, "az")) {
             return new ProjectLangedDto(from.getId(),
                     from.getTitleAZ(),
-                    from.getDescriptionAZ(),
                     from.getAddressAZ(),
+                    from.getDescriptionAZ(),
                     from.getImageUrl(),
                     from.getProgress(),
                     from.getCreateDate(),
@@ -103,8 +103,8 @@ public class ProjectMapper {
 
         if (Objects.equals(language, "ru")) {
             return new ProjectLangedDto(from.getId(),
-                    from.getTitleRU(),
                     from.getDescriptionRU(),
+                    from.getTitleRU(),
                     from.getAddressRU(),
                     from.getImageUrl(),
                     from.getProgress(),
@@ -114,8 +114,8 @@ public class ProjectMapper {
 
         return new ProjectLangedDto(from.getId(),
                 from.getTitleEN(),
-                from.getDescriptionEN(),
                 from.getAddressEN(),
+                from.getDescriptionEN(),
                 from.getImageUrl(),
                 from.getProgress(),
                 from.getCreateDate(),
