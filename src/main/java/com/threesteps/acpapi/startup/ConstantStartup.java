@@ -28,7 +28,7 @@ public class ConstantStartup implements CommandLineRunner {
         };
         for (var constantId : constantList) {
             var constantEntity = constantService.findByIdOptional(constantId);
-            if (constantEntity.isPresent()) return;
+            if (constantEntity.isPresent()) continue;
 
             var constant = new Constant(
                     constantId,
