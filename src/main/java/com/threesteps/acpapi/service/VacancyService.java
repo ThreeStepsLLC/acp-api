@@ -7,6 +7,7 @@ import com.threesteps.acpapi.mapper.VacancyMapper;
 import com.threesteps.acpapi.model.Vacancy;
 import com.threesteps.acpapi.repository.VacancyRepository;
 import com.threesteps.acpapi.service.helper.FileService;
+import com.threesteps.acpapi.util.helper.FilePathHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,7 +30,11 @@ public class VacancyService {
     public List<VacancyDto> getAll() {
         return repository.findAllByOrderByCreateDateDesc()
                 .stream()
-                .map(vacancyMapper::toDTO)
+                .map(x -> {
+                    var dto = vacancyMapper.toDTO(x);
+                    dto.setCvFilePath(FilePathHelper.combineForMedia(dto.getCvFilePath()));
+                    return dto;
+                })
                 .toList();
     }
 
