@@ -103,9 +103,9 @@ public class ProjectMapper {
 
         if (Objects.equals(language, "ru")) {
             return new ProjectLangedDto(from.getId(),
-                    from.getDescriptionRU(),
                     from.getTitleRU(),
                     from.getAddressRU(),
+                    from.getDescriptionRU(),
                     from.getImageUrl(),
                     from.getProgress(),
                     from.getCreateDate(),
