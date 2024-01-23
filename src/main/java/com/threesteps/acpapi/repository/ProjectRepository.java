@@ -9,6 +9,11 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Project, String> {
 
     List<Project> findAllByOrderByCreateDateDesc();
+
     List<Project> findAllByOrderByCreateDateDesc(PageRequest pageRequest);
+
+    List<Project> findAllByOrderByProgressDesc();
+
+    List<Project> findAllByOrderByProgressDesc(PageRequest pageRequest);
 
 }

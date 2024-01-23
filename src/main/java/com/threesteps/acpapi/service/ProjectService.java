@@ -49,8 +49,8 @@ public class ProjectService {
 
     public List<ProjectLangedDto> getLastLanged(String language, Integer count) {
         var entityList = count != null
-                ? repository.findAllByOrderByCreateDateDesc(PageRequest.of(0, count))
-                : repository.findAllByOrderByCreateDateDesc();
+                ? repository.findAllByOrderByProgressDesc(PageRequest.of(0, count))
+                : repository.findAllByOrderByProgressDesc();
 
         return entityList
                 .stream()
@@ -168,7 +168,7 @@ public class ProjectService {
     }
 
     public List<ProjectLangedDto> getAllLanged(String language) {
-        return repository.findAll()
+        return repository.findAllByOrderByProgressDesc()
                 .stream()
                 .map(x -> {
                     var dto = projectMapper.toProjectLangedDto(x, language);
