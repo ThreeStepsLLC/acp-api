@@ -1,13 +1,44 @@
-version: '3.1'
+# version: '3.1'
+
+# services:
+#   app:
+#     build:
+#       context: ./
+#     container_name: afmpro-api-app
+#     restart: always
+#     ports:
+#       - "8098:8080"
+#     environment:
+#       - DB_HOST=${DB_HOST}
+#       - DB_PORT=${DB_PORT}
+#       - DB_NAME=${DB_NAME}
+#       - DB_USERNAME=${DB_USERNAME}
+#       - DB_PASSWORD=${DB_PASSWORD}
+#       - JWT_KEY=${JWT_KEY}
+#       - JWT_ISSUER=${JWT_ISSUER}
+#       - JWT_EXPIRES_ACCESS_TOKEN_MINUTE=${JWT_EXPIRES_ACCESS_TOKEN_MINUTE}
+#       - FILE_UPLOAD_PATH=${FILE_UPLOAD_PATH}
+#       - MEDIA_BASE_URL=${MEDIA_BASE_URL}
+#       - MAIL_USERNAME=${MAIL_USERNAME}
+#       - MAIL_PASSWORD=${MAIL_PASSWORD}
+#     networks:
+#       - proxynet
+#     volumes:
+#       - SharedAssets:/root/uploads
+
+# networks:
+#   proxynet:
+#     external: true
+
+# volumes:
+#   SharedAssets:
+#     external: true
 
 services:
-  app:
-    build:
-      context: ./
-    container_name: afmpro-api-app
+  afmpro-api:
+    image: $IMAGE_NAME:$IMAGE_TAG
+    container_name: afmpro-api
     restart: always
-    ports:
-      - "8098:8080"
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
@@ -29,6 +60,7 @@ services:
 networks:
   proxynet:
     external: true
+    name: proxynet
 
 volumes:
   SharedAssets:
