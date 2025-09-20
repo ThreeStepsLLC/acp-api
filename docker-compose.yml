@@ -1,13 +1,33 @@
-version: '3.1'
+# version: '3.1'
+
+# services:
+#   app:
+#     build:
+#       context: ./
+#     container_name: acp-api-app
+#     restart: always
+#     ports:
+#       - "8084:8080"
+#     environment:
+
+#     networks:
+#       - proxynet
+#     volumes:
+#       - SharedAssets:/root/uploads
+
+# networks:
+#   proxynet:
+#     external: true
+
+# volumes:
+#   SharedAssets:
+#     external: true
 
 services:
-  app:
-    build:
-      context: ./
-    container_name: acp-api-app
+  acp-api:
+    image: $IMAGE_NAME:$IMAGE_TAG
+    container_name: $APP_NAME
     restart: always
-    ports:
-      - "8084:8080"
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
@@ -29,6 +49,7 @@ services:
 networks:
   proxynet:
     external: true
+    name: proxynet
 
 volumes:
   SharedAssets:
