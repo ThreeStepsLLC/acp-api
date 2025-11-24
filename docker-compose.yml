@@ -35,33 +35,23 @@
 #     external: true
 
 services:
-  afmpro-api:
-    image: $IMAGE_NAME:$IMAGE_TAG
-    container_name: afmpro-api
+  postgres:
+    image: postgres:15-alpine
+    container_name: afmpro-postgres
     restart: always
     environment:
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_NAME=${DB_NAME}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - JWT_KEY=${JWT_KEY}
-      - JWT_ISSUER=${JWT_ISSUER}
-      - JWT_EXPIRES_ACCESS_TOKEN_MINUTE=${JWT_EXPIRES_ACCESS_TOKEN_MINUTE}
-      - FILE_UPLOAD_PATH=${FILE_UPLOAD_PATH}
-      - MEDIA_BASE_URL=${MEDIA_BASE_URL}
-      - MAIL_USERNAME=${MAIL_USERNAME}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
-    networks:
-      - proxynet
+      - POSTGRES_DB=${DB_NAME:-afmpro}
+      - POSTGRES_USER=${DB_USERNAME:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+    ports:
+      - "${DB_PORT:-5432}:5432"
     volumes:
-      - SharedAssets:/root/uploads
-
-networks:
-  proxynet:
-    external: true
-    name: proxynet
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  SharedAssets:
-    external: true
+  postgres_data:
