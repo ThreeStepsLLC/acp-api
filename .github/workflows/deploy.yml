@@ -3,7 +3,7 @@ name: Build and Deploy (Onay Consulting API)
 on:
   push:
     branches:
-      - onayconsultingfff 
+      - onayconsulting
 
 env:
   APP_NAME: onayconsulting-api  
