@@ -55,7 +55,7 @@ public class AuthService {
         var user = userService.findByUsername(loginDto.getUsername());
 
         if (!encoder.matches(loginDto.getPassword(), user.getPassword())) {
-            throw new BadCredentialsException("Password error!");
+            throw new BadCredentialsException("Password error!!");
         }
 
         var token = tokenService.generateToken(user.getUsername());
