@@ -53,16 +53,16 @@ jobs:
 
       - name: Copy files to remote server
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh_key deployuser@${{ secrets.HOST_IP_ONAY }} "mkdir -p /home/deployuser/apps/${{ env.APP_NAME }}/uploads"
+          ssh -o StrictHostKeyChecking=no -i ssh_key deployuser@${{ secrets.HOST_IPONAY }} "mkdir -p /home/deployuser/apps/${{ env.APP_NAME }}/uploads"
           
-          scp -o StrictHostKeyChecking=no -i ssh_key docker-compose.yml deployuser@${{ secrets.HOST_IP_ONAY }}:/home/deployuser/apps/${{ env.APP_NAME }}/docker-compose.yml
+          scp -o StrictHostKeyChecking=no -i ssh_key docker-compose.yml deployuser@${{ secrets.HOST_IPONAY }}:/home/deployuser/apps/${{ env.APP_NAME }}/docker-compose.yml
           
           echo "${{ secrets.ENV_FILE_ONAY }}" > .env.production
-          scp -o StrictHostKeyChecking=no -i ssh_key .env.production deployuser@${{ secrets.HOST_IP_ONAY }}:/home/deployuser/apps/${{ env.APP_NAME }}/.env
+          scp -o StrictHostKeyChecking=no -i ssh_key .env.production deployuser@${{ secrets.HOST_IPONAY }}:/home/deployuser/apps/${{ env.APP_NAME }}/.env
 
       - name: Deploy on remote server
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh_key deployuser@${{ secrets.HOST_IP_ONAY }} "
+          ssh -o StrictHostKeyChecking=no -i ssh_key deployuser@${{ secrets.HOST_IPONAY }} "
           cd /home/deployuser/apps/${{ env.APP_NAME }}
           
           echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
