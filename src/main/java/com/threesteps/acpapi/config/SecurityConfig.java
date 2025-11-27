@@ -23,7 +23,8 @@ public class SecurityConfig {
             "/swagger*/**",
             "/v3/api-docs",
             "/webjars/**",
-            "/api/v1/auth/login"
+            "/api/v1/auth/login",
+            "/media/**"
     };
 
     @Bean
@@ -48,7 +49,12 @@ public class SecurityConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(@NotNull CorsRegistry registry) {
-                registry.addMapping("/**").allowedMethods("*");
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .exposedHeaders("*")
+                        .maxAge(3600);
             }
         };
     }

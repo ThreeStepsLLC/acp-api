@@ -34,12 +34,12 @@ services:
       JWT_KEY: ${JWT_KEY}
       JWT_ISSUER: ${JWT_ISSUER}
       JWT_EXPIRES_ACCESS_TOKEN_MINUTE: ${JWT_EXPIRES_ACCESS_TOKEN_MINUTE}
-      FILE_UPLOAD_PATH: /app/uploads
+      FILE_UPLOAD_PATH: ${FILE_UPLOAD_PATH}
       MEDIA_BASE_URL: ${MEDIA_BASE_URL}
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
     volumes:
-      - ./uploads:/app/uploads
+      - ${FILE_UPLOAD_PATH}:${FILE_UPLOAD_PATH}
     networks:
       - app-network
     depends_on:
