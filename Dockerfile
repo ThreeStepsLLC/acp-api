@@ -11,12 +11,12 @@ RUN ./mvnw package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Create user for running the application
-RUN addgroup -g 1000 appuser && \
-    adduser -D -u 1000 -G appuser appuser
+# Create non-root user
+RUN addgroup -g 1000 appgroup && \
+    adduser -D -u 1000 -G appgroup appuser && \
+    chown -R appuser:appgroup /app
 
-COPY --from=build target/*.jar app.jar
-RUN chown appuser:appuser app.jar
+COPY --from=build --chown=appuser:appgroup target/*.jar app.jar
 
 USER appuser
 EXPOSE 8080
