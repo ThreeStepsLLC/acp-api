@@ -14,6 +14,16 @@ public class FilePathHelper {
     }
 
     public static String combineForMedia(String fileName) {
+        if (fileName == null || fileName.isEmpty()) {
+            return staticMediaBaseUrl;
+        }
+        // Ensure no double slashes
+        if (staticMediaBaseUrl.endsWith("/") && fileName.startsWith("/")) {
+            return staticMediaBaseUrl + fileName.substring(1);
+        }
+        if (!staticMediaBaseUrl.endsWith("/") && !fileName.startsWith("/")) {
+            return staticMediaBaseUrl + "/" + fileName;
+        }
         return staticMediaBaseUrl + fileName;
     }
 
