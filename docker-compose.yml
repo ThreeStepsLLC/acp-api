@@ -23,6 +23,7 @@ services:
     image: ${IMAGE_NAME}:${IMAGE_TAG} 
     container_name: onayconsulting-api
     restart: always
+    user: "1000:1000"
     ports:
       - "127.0.0.1:8080:8080"
     environment:
@@ -34,12 +35,12 @@ services:
       JWT_KEY: ${JWT_KEY}
       JWT_ISSUER: ${JWT_ISSUER}
       JWT_EXPIRES_ACCESS_TOKEN_MINUTE: ${JWT_EXPIRES_ACCESS_TOKEN_MINUTE}
-      FILE_UPLOAD_PATH: ${FILE_UPLOAD_PATH}
+      FILE_UPLOAD_PATH: /home/deployuser/apps/onayconsulting-api/uploads
       MEDIA_BASE_URL: ${MEDIA_BASE_URL}
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
     volumes:
-      - ${FILE_UPLOAD_PATH}:${FILE_UPLOAD_PATH}
+      - /home/deployuser/apps/onayconsulting-api/uploads:/home/deployuser/apps/onayconsulting-api/uploads
     networks:
       - app-network
     depends_on:
