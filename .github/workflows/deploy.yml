@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://api.onayconsulting.az 
+      url: https://api.elevateagency.az 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
