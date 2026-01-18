@@ -3,10 +3,10 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - afmpro
+      - azko-api
 
 env:
-  APP_NAME: afmpro-api
+  APP_NAME: azko-api
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://api.afmpro.az
+      url: https://api.azko.az
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -56,8 +56,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i ssh_key root@${{ secrets.HOST_IP }} "mkdir -p /root/ThreeStepsLLC/${{ env.APP_NAME }}"
           scp -o StrictHostKeyChecking=no -i ssh_key docker-compose.processed.yml root@${{ secrets.HOST_IP }}:/root/ThreeStepsLLC/${{ env.APP_NAME }}/docker-compose.yml
-          if [ -n "${{ secrets.ENV_FILE_AFMPRO }}" ]; then
-            echo "${{ secrets.ENV_FILE_AFMPRO }}" > .env
+          if [ -n "${{ secrets.ENV_FILE_AZKO }}" ]; then
+            echo "${{ secrets.ENV_FILE_AZKO }}" > .env
             scp -o StrictHostKeyChecking=no -i ssh_key .env root@${{ secrets.HOST_IP }}:/root/ThreeStepsLLC/${{ env.APP_NAME }}/.env
           fi
 
