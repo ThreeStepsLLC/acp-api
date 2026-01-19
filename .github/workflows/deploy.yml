@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://api.azko.az
+      url: https://api.az-ko.az
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
