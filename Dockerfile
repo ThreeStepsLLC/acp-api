@@ -1,4 +1,4 @@
-FROM openjdk:17 as BUILD
+FROM eclipse-temurin:17-jdk AS BUILD
 
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
