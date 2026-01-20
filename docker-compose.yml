@@ -36,7 +36,7 @@
 
 services:
   azko-api:
-    image: ghcr.io/onayconsulting/azko-api:latest
+    image: ghcr.io/threestepsllc/azko-api:latest
     container_name: azko-api
     restart: always
     environment:
