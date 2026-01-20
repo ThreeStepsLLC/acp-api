@@ -61,7 +61,7 @@ jobs:
           
           scp -o StrictHostKeyChecking=no -i ssh_key docker-compose.yml deployuser@${{ secrets.HOST_IPONAY }}:/home/deployuser/apps/${{ env.APP_NAME }}/docker-compose.yml
           
-          echo "${{ secrets.ENV_FILE_ONAY }}" > .env.production
+          echo "${{ secrets.ENV_FILE_AZKO_API }}" > .env.production
           scp -o StrictHostKeyChecking=no -i ssh_key .env.production deployuser@${{ secrets.HOST_IPONAY }}:/home/deployuser/apps/${{ env.APP_NAME }}/.env
 
       - name: Deploy on remote server
