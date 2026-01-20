@@ -36,7 +36,7 @@
 
 services:
   azko-api:
-    image: $IMAGE_NAME:$IMAGE_TAG
+    image: ghcr.io/onayconsulting/azko-api:latest
     container_name: azko-api
     restart: always
     environment:
